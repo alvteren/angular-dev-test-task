@@ -2,6 +2,21 @@
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"projects": {
+		"utils-state": {
+			"projectType": "library",
+			"root": "libs/utils/state",
+			"sourceRoot": "libs/utils/state/src",
+			"prefix": "bp",
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": ["libs/utils/state/src/**/*.ts", "libs/utils/state/src/**/*.html"]
+					}
+				}
+			},
+			"tags": []
+		},
 		"weather-forecast": {
 			"projectType": "application",
 			"root": "",
@@ -77,6 +92,24 @@
 			},
 			"tags": []
 		},
+		"weather-forecast-const": {
+			"projectType": "library",
+			"root": "libs/weather-forecast/const",
+			"sourceRoot": "libs/weather-forecast/const/src",
+			"prefix": "bp",
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"libs/weather-forecast/const/src/**/*.ts",
+							"libs/weather-forecast/const/src/**/*.html"
+						]
+					}
+				}
+			},
+			"tags": []
+		},
 		"weather-forecast-data-access": {
 			"projectType": "library",
 			"root": "libs/weather-forecast/data-access",
@@ -89,6 +122,24 @@
 						"lintFilePatterns": [
 							"libs/weather-forecast/data-access/src/**/*.ts",
 							"libs/weather-forecast/data-access/src/**/*.html"
+						]
+					}
+				}
+			},
+			"tags": []
+		},
+		"weather-forecast-shell": {
+			"projectType": "library",
+			"root": "libs/weather-forecast/shell",
+			"sourceRoot": "libs/weather-forecast/shell/src",
+			"prefix": "bp",
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"libs/weather-forecast/shell/src/**/*.ts",
+							"libs/weather-forecast/shell/src/**/*.html"
 						]
 					}
 				}

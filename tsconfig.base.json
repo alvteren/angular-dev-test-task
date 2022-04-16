@@ -2,7 +2,10 @@
 	"compileOnSave": false,
 	"compilerOptions": {
 		"paths": {
+			"@bp/utils/state": ["libs/utils/state/src/index.ts"],
+			"@bp/weather-forecast/const": ["libs/weather-forecast/const/src/index.ts"],
 			"@bp/weather-forecast/data-access": ["libs/weather-forecast/data-access/src/index.ts"],
+			"@bp/weather-forecast/shell": ["libs/weather-forecast/shell/src/index.ts"],
 			"@bp/weather-forecast/ui": ["libs/weather-forecast/ui/src/index.ts"]
 		},
 		"baseUrl": ".",
