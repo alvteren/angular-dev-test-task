@@ -1,5 +1,7 @@
+import { ForecastMode } from '../enums';
+
 export namespace WeatherForecastApiResponse {
-	export interface Direct {
+	export interface CoordinatesByLocationName {
 		name: string;
 		local_names: {
 			[key: string]: string;
@@ -86,4 +88,22 @@ export namespace WeatherForecastApiResponse {
 export interface Geo {
 	lat: number;
 	lon: number;
+}
+
+export interface Coordinates {
+	name: string;
+	geo: Geo;
+}
+
+export interface ForecastDaily {
+	dateTime: number;
+	temperature: number;
+	timezone: string;
+}
+
+export interface ForecastHourly extends ForecastDaily {}
+
+export interface ForecastParams {
+	geo: Geo;
+	mode: ForecastMode;
 }

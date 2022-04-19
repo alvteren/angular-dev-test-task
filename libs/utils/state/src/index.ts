@@ -1,1 +1,1 @@
-export * as StateUtils from './lib/loader';
+export * from './lib/loader';

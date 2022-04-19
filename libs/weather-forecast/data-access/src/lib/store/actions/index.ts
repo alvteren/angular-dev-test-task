@@ -1,2 +1,1 @@
-import * as ProductActions from './weather-forecast-group.actions';
-export { ProductActions };
+export * as WeatherForecastActions from './weather-forecast-group.actions';

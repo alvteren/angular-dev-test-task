@@ -1,0 +1,8 @@
+<p>გამარჯობა</p>
+<bp-city-search></bp-city-search>
+<bp-switcher></bp-switcher>
+<ng-container [ngSwitch]="mode$ | async">
+	<bp-daily-view *ngSwitchCase="forecastMode.Daily"></bp-daily-view>
+	<bp-hourly-view *ngSwitchCase="forecastMode.Hourly"></bp-hourly-view>
+	<p *ngSwitchDefault>Choose mode</p>
+</ng-container>

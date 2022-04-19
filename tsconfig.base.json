@@ -2,15 +2,17 @@
 	"compileOnSave": false,
 	"compilerOptions": {
 		"paths": {
+			"@bp/utils/const": ["libs/utils/const/src/index.ts"],
 			"@bp/utils/state": ["libs/utils/state/src/index.ts"],
 			"@bp/weather-forecast/const": ["libs/weather-forecast/const/src/index.ts"],
 			"@bp/weather-forecast/data-access": ["libs/weather-forecast/data-access/src/index.ts"],
+			"@bp/weather-forecast/feature": ["libs/weather-forecast/feature/src/index.ts"],
 			"@bp/weather-forecast/shell": ["libs/weather-forecast/shell/src/index.ts"],
 			"@bp/weather-forecast/ui": ["libs/weather-forecast/ui/src/index.ts"]
 		},
 		"baseUrl": ".",
 		"rootDir": ".",
-		"target": "es2015",
+		"target": "es2019",
 		"module": "es2020",
 		"moduleResolution": "node",
 		"typeRoots": ["node_modules/@types"],
@@ -23,9 +25,10 @@
 		"noUnusedParameters": false,
 		"noEmitHelpers": true,
 		"noLib": false,
-		"strictNullChecks": true,
+		"strictNullChecks": false,
+		"strictPropertyInitialization": false,
 		"sourceMap": true,
-		"inlineSourceMap": false,
+		"inlineSourceMap": true,
 		"declaration": false,
 		"downlevelIteration": true,
 		"experimentalDecorators": true,
@@ -38,7 +41,8 @@
 		"emitDecoratorMetadata": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
-		"noErrorTruncation": true
+		"noErrorTruncation": true,
+		"outDir": "./out-tsc/app"
 	},
 	"angularCompilerOptions": {
 		"annotateForClosureCompiler": false,

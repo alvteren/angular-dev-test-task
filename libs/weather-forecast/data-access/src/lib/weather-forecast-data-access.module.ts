@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { WeatherForecastStoreModule } from './store/weather-forecast-store.module';
 
 @NgModule({
-	imports: [CommonModule],
+	imports: [WeatherForecastStoreModule],
 })
 export class WeatherForecastDataAccessModule {}

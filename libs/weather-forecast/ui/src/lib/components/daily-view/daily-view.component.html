@@ -1,1 +1,18 @@
-<p>daily-view works!</p>
+<p *ngIf="error$ | async">Error. Try again</p>
+<p *ngIf="loading$ | async">Loading...</p>
+<table *ngIf="forecast$ | async as forecast" class="awesome-table">
+	<thead>
+		<tr>
+			<td>City Name</td>
+			<td *ngFor="let item of forecast | slice: 0:7">
+				{{ item.dateTime | date: 'EEEEEE':item.timezone }}
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ cityName$ | async }}</td>
+			<td *ngFor="let item of forecast | slice: 0:7">{{ item.temperature | number: '1.0-0' }}°</td>
+		</tr>
+	</tbody>
+</table>

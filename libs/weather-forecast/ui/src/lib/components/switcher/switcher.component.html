@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+	<label>
+		<input type="radio" formControlName="mode" [value]="forecastMode.Daily" />
+		Daily mode
+	</label>
+	<label>
+		<input type="radio" formControlName="mode" [value]="forecastMode.Hourly" />
+		Hourly mode
+	</label>
+</form>

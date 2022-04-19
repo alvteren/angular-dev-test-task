@@ -2,6 +2,21 @@
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"projects": {
+		"utils-const": {
+			"projectType": "library",
+			"root": "libs/utils/const",
+			"sourceRoot": "libs/utils/const/src",
+			"prefix": "bp",
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": ["libs/utils/const/src/**/*.ts", "libs/utils/const/src/**/*.html"]
+					}
+				}
+			},
+			"tags": []
+		},
 		"utils-state": {
 			"projectType": "library",
 			"root": "libs/utils/state",
@@ -34,6 +49,11 @@
 						"aot": true,
 						"assets": ["apps/weather-forecast/src/favicon.ico", "apps/weather-forecast/src/assets"],
 						"styles": ["apps/weather-forecast/src/styles.scss"],
+						"sourceMap": {
+							"scripts": true
+						},
+						"optimization": false,
+						"buildOptimizer": false,
 						"scripts": []
 					},
 					"configurations": {
@@ -122,6 +142,24 @@
 						"lintFilePatterns": [
 							"libs/weather-forecast/data-access/src/**/*.ts",
 							"libs/weather-forecast/data-access/src/**/*.html"
+						]
+					}
+				}
+			},
+			"tags": []
+		},
+		"weather-forecast-feature": {
+			"projectType": "library",
+			"root": "libs/weather-forecast/feature",
+			"sourceRoot": "libs/weather-forecast/feature/src",
+			"prefix": "bp",
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"libs/weather-forecast/feature/src/**/*.ts",
+							"libs/weather-forecast/feature/src/**/*.html"
 						]
 					}
 				}

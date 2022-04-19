@@ -1,9 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DailyViewComponent } from './components/daily-view/daily-view.component';
+import { CitySearchModule } from './components/city-search/city-search.module';
+import { DailyViewModule } from './components/daily-view/daily-view.module';
+import { HourlyViewModule } from './components/hourly-view/hourly-view.module';
+import { WeatherForecastModule } from './components/weather-forecast/weather-forecast.module';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [DailyViewComponent],
+	imports: [CitySearchModule, HourlyViewModule, DailyViewModule, WeatherForecastModule],
+	exports: [WeatherForecastModule],
 })
 export class WeatherForecastUiModule {}

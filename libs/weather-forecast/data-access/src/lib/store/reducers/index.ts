@@ -1,54 +1,30 @@
 import { InjectionToken, Provider } from '@angular/core';
-import { CityActions } from '@city/data-access';
-import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { StateUtils, StateWithProduct } from '@spartacus/core';
+import * as StateUtils from '@bp/utils/state';
+import { ActionReducerMap } from '@ngrx/store';
 import {
-	CALCULATORS,
-	CALCULATOR_RESULT,
-	UNIT_PRICE,
-	UNIT_PRICE_SELECTED,
+	COORDINATES_BY_LOCATION_NAME,
+	FORECAST_DAILY,
+	FORECAST_HOURLY,
 	WeatherForecastState,
 } from '../weather-forecast-state';
-import { reducer as unitPriceSelectedReducer } from './unit-price-selected.reducer';
+import { reducer as forecastModeReducer } from './switcher.reducer';
 
-export type ProductReducers = Omit<WeatherForecastState, 'ticket'>;
+export type WeatherForecastReducers = WeatherForecastState;
 
-export function getReducers(): ActionReducerMap<ProductReducers> {
+export function getReducers(): ActionReducerMap<WeatherForecastReducers, any> {
 	return {
-		unitPrices: StateUtils.entityLoaderReducer(UNIT_PRICE),
-		unitPriceSelected: StateUtils.entityReducer(UNIT_PRICE_SELECTED, unitPriceSelectedReducer),
-		calculatorList: StateUtils.entityLoaderReducer(CALCULATORS),
-		calculatorResult: StateUtils.loaderReducer(CALCULATOR_RESULT),
+		cities: StateUtils.loaderReducer(COORDINATES_BY_LOCATION_NAME),
+		daily: StateUtils.loaderReducer(FORECAST_DAILY),
+		hourly: StateUtils.loaderReducer(FORECAST_HOURLY),
+		forecastMode: forecastModeReducer,
 	};
 }
 
-export const reducerToken: InjectionToken<ActionReducerMap<ProductReducers>> = new InjectionToken<
-	ActionReducerMap<ProductReducers>
->('ProductReducers');
+export const reducerToken: InjectionToken<ActionReducerMap<WeatherForecastReducers>> = new InjectionToken<
+	ActionReducerMap<WeatherForecastReducers>
+>('WeatherForecastReducers');
 
 export const reducerProvider: Provider = {
 	provide: reducerToken,
 	useFactory: getReducers,
 };
-
-export function resetProductFactory(): MetaReducer<StateWithProduct> {
-	const metaReducer =
-		(reducer: ActionReducer<StateWithProduct>): ActionReducer<StateWithProduct> =>
-		(state: StateWithProduct, action: CityActions.SetActiveBaseStore): StateWithProduct => {
-			if (action.type === CityActions.SET_ACTIVE_BASE_STORE) {
-				const newState = {
-					...state,
-					product: {
-						...state.product,
-						details: { entities: {} },
-					},
-				};
-
-				return reducer(newState, action);
-			}
-
-			return reducer(state, action);
-		};
-
-	return metaReducer;
-}

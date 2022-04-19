@@ -1,0 +1,6 @@
+<form [formGroup]="form" (submit)="search()">
+	<input type="text" formControlName="query" placeholder="Type city name..." />
+</form>
+<ng-container *ngIf="searchResults$ | async as searchResults">
+	<p *ngIf="searchResults.length === 0">Nothing found</p>
+</ng-container>
